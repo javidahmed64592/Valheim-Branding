@@ -24,16 +24,13 @@ Defined in `tokens/palette.json`.
 | Group | Token | Hex | Use |
 | --- | --- | --- | --- |
 | Ground | Umber Black | `#14100D` | Tile edge, seal fill |
-| Ground | Umber | `#221A14` | Panels, inner discs |
 | Ground | Umber Glow | `#3A2A1C` | Light behind the glyph |
 | Frame | Bronze | `#B07A3C` | Border, rings |
 | Frame | Bronze Dark | `#6E4A22` | Hairlines, shading |
 | Frame | Bronze Light | `#D9A15A` | Frame highlight |
 | Signature | Ember Gold | `#F0B04A` | The A, and tiny highlights only |
-| Accent | Wood | `#B77C3F` | Building mods |
-| Accent | Frost | `#7CC4E8` | Protection |
-| Accent | Portal Cyan | `#43D3E6` | Travel |
-| Accent | Tar | `#0B0B0E` | Tar and shadow |
+Subject accents (wood, frost, portal cyan and tar so far) are not tokens.
+They are chosen inside each glyph file.
 
 **The rule:** umber ground, bronze frame, ember-gold A, and at most one subject accent.
 
@@ -48,7 +45,7 @@ Always Ember Gold, always in the seal, never resized outside the seal.
 - Drawn in a 100x100 box in `assets/glyphs/<Mod>.svg`, self-contained (any gradients defined inside the file).
 - Flat or lightly shaded. No glossy highlights beyond a single small glint.
 - Dark outline in Bronze Dark or a darker shade of the fill, about 2 units wide.
-- One accent colour from the palette. Everything else is wood, bronze or umber tones.
+- One accent colour. Everything else is wood, bronze or umber tones.
 - No text or numbers inside a glyph. They do not survive small sizes.
 - Keep the bottom-right corner of the glyph box quiet: the seal overlaps it.
 
