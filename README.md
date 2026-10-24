@@ -1,6 +1,5 @@
 [![Python](https://img.shields.io/badge/Python-3.13-3776AB.svg?style=flat&logo=python&logoColor=ffd343)](https://docs.python.org/3.13/)
 [![CI](https://img.shields.io/github/actions/workflow/status/javidahmed64592/valheim-branding/ci.yml?branch=main&style=flat-square&label=CI&logo=github)](https://github.com/javidahmed64592/valheim-branding/actions/workflows/ci.yml)
-[![Build](https://img.shields.io/github/actions/workflow/status/javidahmed64592/valheim-branding/build.yml?branch=main&style=flat-square&label=Build&logo=github)](https://github.com/javidahmed64592/valheim-branding/actions/workflows/build.yml)
 [![Docs](https://img.shields.io/github/actions/workflow/status/javidahmed64592/valheim-branding/docs.yml?branch=main&style=flat-square&label=Docs&logo=github)](https://github.com/javidahmed64592/valheim-branding/actions/workflows/docs.yml)
 [![Icons](https://img.shields.io/github/actions/workflow/status/javidahmed64592/valheim-branding/icons.yml?branch=main&style=flat-square&label=Icons&logo=github)](https://github.com/javidahmed64592/valheim-branding/actions/workflows/icons.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
