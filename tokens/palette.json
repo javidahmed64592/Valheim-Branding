@@ -1,0 +1,21 @@
+{
+  "ground": {
+    "umberBlack": "#14100D",
+    "umber": "#221A14",
+    "umberGlow": "#3A2A1C"
+  },
+  "frame": {
+    "bronze": "#B07A3C",
+    "bronzeDark": "#6E4A22",
+    "bronzeLight": "#D9A15A"
+  },
+  "signature": {
+    "emberGold": "#F0B04A"
+  },
+  "accents": {
+    "wood": "#B77C3F",
+    "frost": "#7CC4E8",
+    "portalCyan": "#43D3E6",
+    "tar": "#0B0B0E"
+  }
+}

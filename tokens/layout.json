@@ -1,0 +1,8 @@
+{
+  "size": 256,
+  "frame": { "inset": 9, "radius": 14, "strokeWidth": 6 },
+  "innerLine": { "inset": 18, "radius": 8, "strokeWidth": 1.5 },
+  "studs": { "radius": 3.6, "positions": [[28, 28], [228, 28], [28, 228]] },
+  "glyph": { "centerX": 122, "centerY": 118, "size": 168 },
+  "seal": { "centerX": 208, "centerY": 208, "radius": 28, "ringWidth": 5, "innerRingInset": 6, "markScale": 1.15 }
+}
