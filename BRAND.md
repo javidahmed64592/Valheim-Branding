@@ -29,6 +29,7 @@ Defined in `tokens/palette.json`.
 | Frame | Bronze Dark | `#6E4A22` | Hairlines, shading |
 | Frame | Bronze Light | `#D9A15A` | Frame highlight |
 | Signature | Ember Gold | `#F0B04A` | The A, and tiny highlights only |
+
 Subject accents (wood, frost, portal cyan and tar so far) are not tokens.
 They are chosen inside each glyph file.
 
