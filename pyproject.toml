@@ -1,0 +1,166 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "template-python"
+version = "0.1.0"
+description = "An example pyproject.toml."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Javid Ahmed", email = "javidahmed@icloud.com" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "pydantic>=2.14.0",
+    "pyhere>=1.0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "bandit>=1.9.4",
+    "pip-audit>=2.10.1",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.0",
+    "ty>=0.0.86",
+    "uv-align>=0.2.1",
+    "validate-pyproject>=0.26",
+]
+docs = [
+    "furo>=2025.12.19",
+    "linkify-it-py>=2.2.0",
+    "sphinx>=9.1.0",
+    "sphinx-autodoc-typehints>=3.13.9",
+    "sphinx-substitution-extensions>=2026.10.9",
+]
+
+[project.urls]
+repository = "https://github.com/javidahmed64592/template-python"
+documentation = "https://javidahmed64592.github.io/template-python"
+
+[project.scripts]
+ci-pyproject-version = "template_python.workflows:print_version_pyproject"
+ci-pyproject-name = "template_python.workflows:print_name_pyproject"
+ci-uv-lock-version = "template_python.workflows:print_version_uv_lock"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build]
+include = [
+  "template_python/**",
+]
+
+[tool.pytest.ini_options]
+addopts = [
+    "-vv",
+    "--cov",
+    "--cov-report",
+    "term-missing",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["template_python", "tests"]
+
+[tool.coverage.report]
+fail_under = 95
+skip_covered = false
+show_missing = true
+
+[tool.ruff]
+target-version = "py313"
+line-length = 120
+indent-width = 4
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+extend-exclude = [
+    "**/__init__.py",
+]
+
+[tool.ruff.lint]
+select = [
+    "A",
+    "ANN",
+    "ASYNC",
+    "B",
+    "C4",
+    "D",
+    "E",
+    "EM",
+    "F",
+    "FBT",
+    "G",
+    "I",
+    "ISC",
+    "LOG",
+    "N",
+    "NPY",
+    "PD",
+    "PERF",
+    "PL",
+    "PT",
+    "RET",
+    "RUF",
+    "S",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",
+]
+ignore = [
+    "D203",
+    "D213",
+    "PLR0913",
+    "S101"
+]
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
