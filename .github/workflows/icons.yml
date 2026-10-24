@@ -1,0 +1,29 @@
+name: Icons
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-icons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: javidahmed64592/actions-template-python/actions/setup/setup-uv-python@main
+      - uses: javidahmed64592/actions-template-python/actions/setup/install-python-core@main
+
+      - name: Install Cairo
+        run: sudo apt-get update && sudo apt-get install -y libcairo2
+
+      - name: Build icons
+        run: uv run build-icons
+
+      - name: Upload icons
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ github.event.repository.name }}-icons
+          path: dist/
+          if-no-files-found: error

@@ -1,8 +1,8 @@
-# Python Template Project - AI Agent Instructions
+# Valheim Branding - AI Agent Instructions
 
 ## Project Overview
 
-This is a template Python repository demonstrating modern Python tooling with `uv`, `ruff`, `ty`, and `pytest`. The project uses Python 3.13+ and follows strict type checking and linting standards. It includes an example package with a console entry point, build configuration using hatchling, and comprehensive CI/CD pipelines.
+Visual branding rules and icon generator for the Aestelwen Valheim mods. `valheim_branding/build_icons.py` composes one 256x256 Thunderstore icon per glyph in `assets/glyphs/`, using the tokens in `tokens/` and the mark in `assets/mark/`. Rules are written up in `BRAND.md`. The project uses Python 3.13+, `uv`, `ruff`, `ty`, and `pytest`, with build configuration using hatchling.
 
 ## Package Management with uv
 
@@ -31,7 +31,7 @@ This is a template Python repository demonstrating modern Python tooling with `u
 
 - Configuration in `pyproject.toml` under `[tool.pytest.ini_options]`
 - Always run with coverage: `uv run pytest` (coverage enabled by default via `addopts`)
-- **Coverage requirements**: Minimum 80% coverage enforced via `fail_under = 80`
+- **Coverage requirements**: Minimum 95% coverage enforced via `fail_under = 95`
 - **Branch coverage enabled**: Tracks both line and branch coverage
 - Coverage report format: `term-missing` shows uncovered lines
 - Test files in `tests/` directory follow `test_*.py` naming
@@ -41,7 +41,7 @@ This is a template Python repository demonstrating modern Python tooling with `u
 - **bandit** - scans Python code for security vulnerabilities
 - **pip-audit** - audits dependencies for known security issues
 - Both run automatically in CI pipeline
-- Run locally: `uv run bandit -r template_python/` and `uv run pip-audit`
+- Run locally: `uv run bandit -r valheim_branding/` and `uv run pip-audit`
 
 ## Development Workflow
 
@@ -86,8 +86,10 @@ def test_example_function() -> None:
 ## Project Structure
 
 - `.github/` - GitHub workflows and actions
+- `assets/` - the Longhouse A mark and one glyph SVG per mod
+- `tokens/` - palette and layout tokens
 - `docs/` - documentation files
-- `template_python/` - main package code
+- `valheim_branding/` - main package code
 - `tests/` - pytest test files
 - `.python-version` - Python version specification for `uv` and CI
 - `pyproject.toml` - single source of truth for all configuration (build, dependencies, tooling)
@@ -97,4 +99,3 @@ def test_example_function() -> None:
 
 - Package version defined in `pyproject.toml` under `[project]` → `version`
 - CI validates version consistency across `pyproject.toml` and `uv.lock`
-- Update package name in CI's version-check job if renaming from "template_python"
