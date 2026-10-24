@@ -1,4 +1,4 @@
-"""Build Thunderstore icons (256x256 PNG) for every mod in mods.json.
+"""Build Thunderstore icons (256x256 PNG) for every glyph in assets/glyphs.
 
 Every icon is the same tile: bronze frame, warm umber glow, one centred glyph,
 and the ember-gold Longhouse A in a round seal at the bottom right.
@@ -19,12 +19,11 @@ def load_json(rel: str) -> dict:
     return json.loads((ROOT / rel).read_text())
 
 
-def inner_svg(rel: str) -> str:
+def inner_svg(path: Path) -> str:
     """Return the markup inside the outer <svg> of an asset file."""
-    text = (ROOT / rel).read_text()
-    match = re.search(r"<svg[^>]*>(.*)</svg>", text, re.DOTALL)
+    match = re.search(r"<svg[^>]*>(.*)</svg>", path.read_text(), re.DOTALL)
     if not match:
-        error_msg = f"{rel} is not a valid SVG"
+        error_msg = f"{path} is not a valid SVG"
         raise ValueError(error_msg)
     return match.group(1)
 
@@ -37,7 +36,7 @@ def place(markup: str, cx: float, cy: float, size: float) -> str:
 
 def build_svg(glyph_markup: str, mark_markup: str, palette: dict, layout: dict) -> str:
     """Build the complete SVG for a mod icon using the given glyph, mark, palette, and layout."""
-    g, f, _ = palette["ground"], palette["frame"], palette["signature"]
+    g, f = palette["ground"], palette["frame"]
     size = layout["size"]
     fr, il, st = layout["frame"], layout["innerLine"], layout["studs"]
     gl, se = layout["glyph"], layout["seal"]
@@ -84,14 +83,14 @@ def main() -> None:
     """Main entry point for the build-icons script."""
     palette = load_json("tokens/palette.json")
     layout = load_json("tokens/layout.json")
-    mods = load_json("mods.json")["mods"]
+    glyphs = sorted((ROOT / "assets" / "glyphs").glob("*.svg"))
 
-    mark = inner_svg("assets/mark/longhouse-a.svg").replace("#F0B04A", palette["signature"]["emberGold"])
+    mark = inner_svg(ROOT / "assets" / "mark" / "longhouse-a.svg").replace("#F0B04A", palette["signature"]["emberGold"])
     out_root = ROOT / "dist"
     built = []
-    for mod in mods:
-        svg = build_svg(inner_svg(mod["glyph"]), mark, palette, layout)
-        out_dir = out_root / mod["name"]
+    for glyph in glyphs:
+        svg = build_svg(inner_svg(glyph), mark, palette, layout)
+        out_dir = out_root / glyph.stem
         out_dir.mkdir(parents=True, exist_ok=True)
         png = out_dir / "icon.png"
         cairosvg.svg2png(
@@ -100,9 +99,8 @@ def main() -> None:
         built.append(png)
         print(f"built {png.relative_to(ROOT)}")
 
-    if len(built) > 1:
-        sheet = Image.new("RGB", (layout["size"] * len(built), layout["size"]), (40, 40, 40))
-        for i, png in enumerate(built):
-            sheet.paste(Image.open(png).convert("RGB"), (i * layout["size"], 0))
-        sheet.save(out_root / "contact-sheet.png")
-        print(f"built {(out_root / 'contact-sheet.png').relative_to(ROOT)}")
+    sheet = Image.new("RGB", (layout["size"] * len(built), layout["size"]), (40, 40, 40))
+    for i, png in enumerate(built):
+        sheet.paste(Image.open(png).convert("RGB"), (i * layout["size"], 0))
+    sheet.save(out_root / "contact-sheet.png")
+    print(f"built {(out_root / 'contact-sheet.png').relative_to(ROOT)}")

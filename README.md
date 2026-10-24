@@ -2,6 +2,7 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/javidahmed64592/valheim-branding/ci.yml?branch=main&style=flat-square&label=CI&logo=github)](https://github.com/javidahmed64592/valheim-branding/actions/workflows/ci.yml)
 [![Build](https://img.shields.io/github/actions/workflow/status/javidahmed64592/valheim-branding/build.yml?branch=main&style=flat-square&label=Build&logo=github)](https://github.com/javidahmed64592/valheim-branding/actions/workflows/build.yml)
 [![Docs](https://img.shields.io/github/actions/workflow/status/javidahmed64592/valheim-branding/docs.yml?branch=main&style=flat-square&label=Docs&logo=github)](https://github.com/javidahmed64592/valheim-branding/actions/workflows/docs.yml)
+[![Icons](https://img.shields.io/github/actions/workflow/status/javidahmed64592/valheim-branding/icons.yml?branch=main&style=flat-square&label=Icons&logo=github)](https://github.com/javidahmed64592/valheim-branding/actions/workflows/icons.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <!-- omit from toc -->
@@ -23,9 +24,11 @@ One tile, one frame, one seal. Only the middle changes. See [BRAND.md](BRAND.md)
 ```bash
 uv sync --all-extras
 
-# Build dist/<Mod>/icon.png for every mod
+# Build dist/<Mod>/icon.png for every glyph, plus dist/contact-sheet.png
 uv run build-icons
 ```
+
+The [Icons workflow](.github/workflows/icons.yml) runs the same command on every push and pull request and uploads `dist/` as an artifact named `valheim-branding-icons`. It can also be run by hand from the Actions tab.
 
 ## Layout
 
@@ -34,11 +37,9 @@ uv run build-icons
 | `tokens/palette.json` | Colour tokens |
 | `tokens/layout.json` | Sizes and positions for the tile, studs, glyph and seal |
 | `assets/mark/` | The Longhouse A |
-| `assets/glyphs/` | One 100x100 SVG per mod |
-| `mods.json` | Which mods exist, glyph and accent |
-| `src/build_icons.py` | Composes the 256x256 icons |
-| `scripts/apply-icons.sh` | Copies built icons into the mod repos |
-| `dist/` | Built icons, committed so each mod can pull the current one |
+| `assets/glyphs/` | One 100x100 SVG per mod; each file becomes one icon |
+| `valheim_branding/build_icons.py` | Composes the 256x256 icons |
+| `dist/` | Built icons (not committed); the Icons workflow uploads them as an artifact |
 
 ## Mods
 

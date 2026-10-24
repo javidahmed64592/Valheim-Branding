@@ -55,5 +55,4 @@ Always Ember Gold, always in the seal, never resized outside the seal.
 ## Adding a mod
 
 1. Draw `assets/glyphs/<Mod>.svg` following the glyph rules.
-2. Add an entry to `mods.json` (`name`, `glyph`, `accent`).
-3. Regenerate with `uv run build-icons`.
+2. Regenerate with `uv run build-icons`. The icon is written to `dist/<Mod>/icon.png`; no registry file to update.
