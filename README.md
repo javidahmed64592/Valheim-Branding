@@ -15,7 +15,6 @@ One tile, one frame, one seal. Only the middle changes. See [BRAND.md](BRAND.md)
 ## Table of Contents
 - [Quick start](#quick-start)
 - [Layout](#layout)
-- [Mods](#mods)
 - [License](#license)
 
 ## Quick start
@@ -39,10 +38,6 @@ The [Icons workflow](.github/workflows/icons.yml) runs the same command on every
 | `assets/glyphs/` | One 100x100 SVG per mod; each file becomes one icon |
 | `valheim_branding/build_icons.py` | Composes the 256x256 icons |
 | `dist/` | Built icons (not committed); the Icons workflow uploads them as an artifact |
-
-## Mods
-
-DvergrWorkers, HalfBeam, HomeBubble, NoHammerBuildMenu, PortalNetwork, TarExtractor.
 
 ## License
 
